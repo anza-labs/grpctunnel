@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 
-	"github.com/jhump/grpctunnel/tunnelpb"
+	"github.com/anza-labs/grpctunnel/tunnelpb"
 )
 
 type reverseTunnelServerState int

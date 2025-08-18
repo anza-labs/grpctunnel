@@ -6,20 +6,21 @@ import (
 	"encoding/hex"
 	"flag"
 	"fmt"
-	"github.com/fullstorydev/grpchan"
 	"log"
 	"sync/atomic"
 	"time"
+
+	"github.com/fullstorydev/grpchan"
 
 	"github.com/fullstorydev/grpchan/grpchantesting"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/jhump/grpctunnel"
-	"github.com/jhump/grpctunnel/internal"
-	"github.com/jhump/grpctunnel/internal/gen"
-	"github.com/jhump/grpctunnel/tunnelpb"
+	"github.com/anza-labs/grpctunnel"
+	"github.com/anza-labs/grpctunnel/internal"
+	"github.com/anza-labs/grpctunnel/internal/gen"
+	"github.com/anza-labs/grpctunnel/tunnelpb"
 )
 
 func main() {

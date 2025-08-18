@@ -2,16 +2,17 @@ package grpctunnel
 
 import (
 	"context"
-	"google.golang.org/grpc/metadata"
 	"sync"
 	"sync/atomic"
+
+	"google.golang.org/grpc/metadata"
 
 	"github.com/fullstorydev/grpchan"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/jhump/grpctunnel/tunnelpb"
+	"github.com/anza-labs/grpctunnel/tunnelpb"
 )
 
 const (

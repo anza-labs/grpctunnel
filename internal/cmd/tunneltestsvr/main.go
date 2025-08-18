@@ -12,10 +12,10 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/jhump/grpctunnel"
-	"github.com/jhump/grpctunnel/internal"
-	"github.com/jhump/grpctunnel/internal/gen"
-	"github.com/jhump/grpctunnel/tunnelpb"
+	"github.com/anza-labs/grpctunnel"
+	"github.com/anza-labs/grpctunnel/internal"
+	"github.com/anza-labs/grpctunnel/internal/gen"
+	"github.com/anza-labs/grpctunnel/tunnelpb"
 )
 
 func main() {

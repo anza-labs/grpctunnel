@@ -1,7 +1,6 @@
 # gRPC Tunnels
-[![Build Status](https://circleci.com/gh/jhump/grpctunnel/tree/main.svg?style=svg)](https://circleci.com/gh/jhump/grpctunnel/tree/main)
-[![Go Report Card](https://goreportcard.com/badge/github.com/jhump/grpctunnel)](https://goreportcard.com/report/github.com/jhump/grpctunnel)
-[![GoDoc](https://godoc.org/github.com/jhump/grpctunnel?status.svg)](https://godoc.org/github.com/jhump/grpctunnel)
+[![Go Report Card](https://goreportcard.com/badge/github.com/anza-labs/grpctunnel)](https://goreportcard.com/report/github.com/anza-labs/grpctunnel)
+[![GoDoc](https://godoc.org/github.com/anza-labs/grpctunnel?status.svg)](https://godoc.org/github.com/anza-labs/grpctunnel)
 
 This library enables carrying gRPC over gRPC. There are a few niche use cases
 where this could be useful, but the most widely applicable one is likely for
@@ -74,14 +73,14 @@ this document will use the following terms to hopefully avoid confusion:
 ## Tunnel Handler
 
 The tunnel handler is constructed via
-[`grpctunnel.NewTunnelServiceHandler`](https://pkg.go.dev/github.com/jhump/grpctunnel#NewTunnelServiceHandler).
+[`grpctunnel.NewTunnelServiceHandler`](https://pkg.go.dev/github.com/anza-labs/grpctunnel#NewTunnelServiceHandler).
 The options provided with this call are for configuring reverse tunnel support.
 The handler has other methods that can be used to interact with reverse tunnels
 that have been established.
 
 The resulting handler has a `Service` method, which returns the actual service
 implementation, which can then be registered with a gRPC server using 
-[`tunnelpb.RegisterTunnelServiceServer`](https://pkg.go.dev/github.com/jhump/grpctunnel/tunnelpb#RegisterTunnelServiceServer).
+[`tunnelpb.RegisterTunnelServiceServer`](https://pkg.go.dev/github.com/anza-labs/grpctunnel/tunnelpb#RegisterTunnelServiceServer).
 
 ```go
 handler := grpctunnel.NewTunnelServiceHandler(
@@ -126,10 +125,10 @@ sequenceDiagram
 ### Client
 
 The tunnel is opened by the client using the generated stub for the tunneling
-protocol: [`tunnelpb.TunnelServiceClient`](https://pkg.go.dev/github.com/jhump/grpctunnel/tunnelpb#TunnelServiceClient).
+protocol: [`tunnelpb.TunnelServiceClient`](https://pkg.go.dev/github.com/anza-labs/grpctunnel/tunnelpb#TunnelServiceClient).
 
 Once a stream has been established via the stub's `OpenTunnel` method, it can
-be used to create a channel via [`grpctunnel.NewChannel`](https://pkg.go.dev/github.com/jhump/grpctunnel#NewChannel).
+be used to create a channel via [`grpctunnel.NewChannel`](https://pkg.go.dev/github.com/anza-labs/grpctunnel#NewChannel).
 
 That channel can be used to create other stubs, as if it were a
 `*grpc.ClientConn`. All RPCs issued from stubs created with this channel will be
@@ -232,11 +231,11 @@ tunnels is a bit more complicated than usage of forward tunnels.
 ### Client
 
 The tunnel is opened by the client using the generated stub for the tunneling
-protocol: [`tunnelpb.TunnelServiceClient`](https://pkg.go.dev/github.com/jhump/grpctunnel/tunnelpb#TunnelServiceClient).
+protocol: [`tunnelpb.TunnelServiceClient`](https://pkg.go.dev/github.com/anza-labs/grpctunnel/tunnelpb#TunnelServiceClient).
 
 However, since the network client will act as the channel server, handlers for
 the exposed services must be registered before the tunnel is actually created.
-This is done by creating a [`grpctunnel.ReverseTunnelServer`](https://pkg.go.dev/github.com/jhump/grpctunnel#NewReverseTunnelServer)
+This is done by creating a [`grpctunnel.ReverseTunnelServer`](https://pkg.go.dev/github.com/anza-labs/grpctunnel#NewReverseTunnelServer)
 and then using it to register service implementations, just as one would
 register service implementations with a `*grpc.Server`.
 
@@ -298,7 +297,7 @@ reverse tunnels:
   provided when the tunnel was opened, and any other context values that may
   have been populated by interceptors. All reverse tunnels with the same key can
   be treated like a connection pool using the handler's
-  [`KeyAsChannel`](https://pkg.go.dev/github.com/jhump/grpctunnel#TunnelServiceHandler.KeyAsChannel)
+  [`KeyAsChannel`](https://pkg.go.dev/github.com/anza-labs/grpctunnel#TunnelServiceHandler.KeyAsChannel)
   method.
 
 The callbacks provide the most flexibility for how to make use of the available

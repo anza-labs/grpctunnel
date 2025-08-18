@@ -18,7 +18,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/jhump/grpctunnel/tunnelpb"
+	"github.com/anza-labs/grpctunnel/tunnelpb"
 )
 
 func TestTunnelServiceHandler(t *testing.T) {

@@ -1,6 +1,6 @@
 package grpctunnel
 
-import "github.com/jhump/grpctunnel/tunnelpb"
+import "github.com/anza-labs/grpctunnel/tunnelpb"
 
 // TunnelOption is an option for configuring the behavior of
 // a tunnel client or tunnel server.

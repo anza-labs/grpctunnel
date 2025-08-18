@@ -19,7 +19,7 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/jhump/grpctunnel/tunnelpb"
+	"github.com/anza-labs/grpctunnel/tunnelpb"
 )
 
 func serveTunnel(stream tunnelStreamServer, tunnelMetadata metadata.MD, clientAcceptsSettings bool, opts *tunnelOpts, handlers grpchan.HandlerMap, isClosing func() bool) error {

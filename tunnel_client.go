@@ -18,7 +18,7 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/emptypb"
 
-	"github.com/jhump/grpctunnel/tunnelpb"
+	"github.com/anza-labs/grpctunnel/tunnelpb"
 )
 
 // NewChannel creates a new pending channel that, once started, can be used
