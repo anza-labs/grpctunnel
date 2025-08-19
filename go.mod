@@ -2,7 +2,7 @@ module github.com/anza-labs/grpctunnel
 
 go 1.24.0
 
-toolchain go1.24.4
+toolchain go1.25.0
 
 require (
 	github.com/fullstorydev/grpchan v1.1.1
