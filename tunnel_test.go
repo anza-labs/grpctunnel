@@ -350,12 +350,15 @@ func setupServer(t *testing.T, svc grpchantesting.TestServiceServer, disableFlow
 		<-serveDone
 	})
 
-	cc, err := grpc.Dial(l.Addr().String(), grpc.WithBlock(), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	cc, err := grpc.NewClient(l.Addr().String(), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	require.NoError(t, err, "failed to create client")
 	t.Cleanup(func() {
 		err := cc.Close()
 		require.NoError(t, err, "failed to close client conn")
 	})
+
+	// try to connect
+	cc.Connect()
 
 	// Make sure any goroutines used by the client and server created above have started. That
 	// way, we don't incorrectly think they are leaked goroutines.

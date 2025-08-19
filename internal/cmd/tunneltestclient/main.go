@@ -5,10 +5,10 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"flag"
-	"fmt"
 	"log"
+	"net"
+	"strconv"
 	"sync/atomic"
-	"time"
 
 	"github.com/fullstorydev/grpchan"
 
@@ -37,13 +37,10 @@ func main() {
 	}
 
 	ctx := context.Background()
-	dialCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
-	defer cancel()
-	cc, err := grpc.DialContext(dialCtx,
-		fmt.Sprintf("127.0.0.1:%d", *serverPort),
+
+	cc, err := grpc.NewClient(
+		net.JoinHostPort("127.0.0.1", strconv.Itoa(*serverPort)),
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
-		grpc.WithBlock(),
-		grpc.WithReturnConnectionError(),
 	)
 	if err != nil {
 		log.Fatal(err)
@@ -80,7 +77,7 @@ func main() {
 		// Over the tunnel, we just expose this simple test service
 		var svrCounts atomic.Int32
 		grpchantesting.RegisterTestServiceServer(withServerCounts(reverseTunnel, &svrCounts), &grpchantesting.TestServer{})
-		ctx, cancel = context.WithCancel(ctx)
+		ctx, cancel := context.WithCancel(ctx)
 		done := make(chan struct{})
 		defer func() {
 			cancel()

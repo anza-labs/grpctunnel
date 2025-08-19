@@ -1,3 +1,8 @@
+> [!NOTE]
+> This repository is in **maintenance mode**.  
+> It only receives automated dependency updates and runs automated tests.  
+> **No new features, no tagged releases, and no manual changes will be made after initial cleanup.**  
+
 # gRPC Tunnels
 [![Go Report Card](https://goreportcard.com/badge/github.com/anza-labs/grpctunnel)](https://goreportcard.com/report/github.com/anza-labs/grpctunnel)
 [![GoDoc](https://godoc.org/github.com/anza-labs/grpctunnel?status.svg)](https://godoc.org/github.com/anza-labs/grpctunnel)
@@ -107,6 +112,7 @@ if err := svr.Serve(l); err != nil {
 A forward tunnel is one in which the tunnel client is the same as the network
 client, and the tunnel server is the same as the network server. So the client
 that opened the tunnel is also the one that initiates RPCs through the tunnel.
+
 ```mermaid
 sequenceDiagram
     participant network client
