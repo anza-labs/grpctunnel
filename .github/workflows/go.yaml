@@ -3,6 +3,8 @@ name: go
 on:
   pull_request:
     branches: ['*']
+  push:
+    branches: ['main']
 
 jobs:
   lint:
